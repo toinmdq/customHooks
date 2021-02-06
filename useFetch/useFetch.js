@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-
+// TODO: verificar bien antes de usar
 export const useFetch = (url) => {
-
 	const [ state, setState ] = useState({ loading: true, error: null, data: null });
-
 	const isMounted = useRef(true);
 
 	useEffect(() => {
@@ -17,14 +15,13 @@ export const useFetch = (url) => {
 		fetch(url)
 			.then(data => data.json())
 			.then(data => {
-				if (data.length === 0) data.push({ quote: 'No se encuentra el id' });
+				// TODO: setTimeout ??? para que? 
 				setTimeout(() => {
-
 					if (isMounted.current) {
 						setState({
-							loading: false,
+							data: data,
 							error: null,
-							data: data
+							loading: false
 						});
 					} else {
 						console.log('setState no se llamo');
@@ -33,31 +30,10 @@ export const useFetch = (url) => {
 				}, 200)
 			})
 			.catch(error => setState({
-				loading: false,
+				data: null,
 				error,
-				data: null
+				loading: false
 			}));
 	}, [ url ]);
-
 	return state;
 }
-
-
-// useEffect(() => {
-
-// 	const fetchDatos = async () => {
-// 		const data = await fetch(url);
-// 		return await data.json();
-// 	}
-// 	fetchDatos()
-// 		.then(data => setState({
-// 			...state,
-// 			data: data,
-// 			loading: false
-// 		}))
-// 		.catch(e => setState({
-// 			...state,
-// 			error: e
-// 		}));
-
-// }, [ state, url ])

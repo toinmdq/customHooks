@@ -1,19 +1,17 @@
-# React.js Custom Hooks
+# useFetch Hook
 
-### `These custom hooks are for anyone.`
-#
-## Available Hooks:
+## How to use
 
-In each directory, you can see the corresponding README.md
-\
-<br>
-### `* useCounter`
-> make counters
-### `* useFetch`
-> fetch any API
-### `* useForm`
-> handle payload
+```javascript
+// parameters
+const url = 'https://jsonplaceholder.typicode.com/albums'; // endpoint
 
-<br>
+// call hook
+const { data, loading: true, error: null } = useFetch( url );
 
-### Feel free to use it.
+
+
+ 
+```
+
+

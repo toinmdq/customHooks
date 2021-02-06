@@ -1,19 +1,23 @@
-# React.js Custom Hooks
+# useForm Hook
 
-### `These custom hooks are for anyone.`
-#
-## Available Hooks:
+## How to use
+</br>
 
-In each directory, you can see the corresponding README.md
-\
-<br>
-### `* useCounter`
-> make counters
-### `* useFetch`
-> fetch any API
-### `* useForm`
-> handle payload
+```javascript
 
-<br>
+// parameters
+const initialForm = {
+	name: '',
+	age: 0,
+	email: ''
+};
 
-### Feel free to use it.
+
+// call hook
+const [ formValues, handleInputChange, reset } = useForm( initialForm );
+
+
+
+```
+
+
